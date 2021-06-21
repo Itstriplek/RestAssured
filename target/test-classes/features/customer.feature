@@ -1,7 +1,7 @@
 #Author: your.email@your.domain.com
 
 @tag
-Feature: Get custoemr details
+Feature: Get customer details
 
 
   Scenario Outline: Fetch all customer details from API

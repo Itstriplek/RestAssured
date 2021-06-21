@@ -17,7 +17,7 @@ public class Steps {
 	
 	@Given("^I have a API endpoint to fetch all customer details and get the response$")
     public void i_have_a_api_endpoint_to_fetch_all_customer_details_and_get_the_response() {
-		TestBase.init();
+		apitest.setup();
     }
 
     @When("^I fetch the customer ID received and append it to the endpoint$")
@@ -29,13 +29,13 @@ public class Steps {
    public void i_get_the_valid_customer_response()  {
 
     	
-    	APITest.specificCustomerDetails(APITest.ids,APITest.email,apitest.firstName,apitest.lastName);
+    	apitest.specificCustomerDetails(apitest.ids,apitest.email,apitest.firstName,apitest.lastName);
 
 
     }
    @And("^I send incorrect customer ID I get error response$")
    public void i_send_incorrect_customer_id_i_get_error_response() {
-	   APITest.incorrectCustomerDetails(APITest.ids);
+	   apitest.incorrectCustomerDetails(apitest.ids);
 	   
    }
 

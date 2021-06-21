@@ -4,13 +4,9 @@ package baseTest;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.runner.RunWith;
-
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import junit.TestBase;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Title;
 import utils.CommonRestMethods;
 
 //@RunWith(SerenityRunner.class)
@@ -19,12 +15,18 @@ public class APITest extends TestBase {
 	
 	static CommonRestMethods restCommonMethods = new CommonRestMethods();
 	
-	public static List<Integer> ids = new ArrayList<Integer>();
-	public static List<String> email = new ArrayList<String>();
-	public static List<String> firstName = new ArrayList<String>();
-	public static List<String> lastName = new ArrayList<String>();
+	public  List<Integer> ids = new ArrayList<Integer>();
+	public  List<String> email = new ArrayList<String>();
+	public  List<String> firstName = new ArrayList<String>();
+	public  List<String> lastName = new ArrayList<String>();
 	
 
+	public void setup()
+	{
+		RestAssured.baseURI = "http://localhost:4547/Blog.Api";
+	}
+	
+	
 	public void getAllCutomers()
 	{
 		Response response = restCommonMethods.getResponse("/Customers");
@@ -43,7 +45,7 @@ public class APITest extends TestBase {
 	}
 	
 	
-	public static void specificCustomerDetails(List<Integer> id,List<String> email,List<String> firstname,List<String> lastname)
+	public  void specificCustomerDetails(List<Integer> id,List<String> email,List<String> firstname,List<String> lastname)
 	{
 		
 		for(int i=0;i<id.size();i++)
@@ -67,7 +69,7 @@ public class APITest extends TestBase {
 	}
 	
 	
-	public static void incorrectCustomerDetails(List<Integer> id)
+	public void incorrectCustomerDetails(List<Integer> id)
 	{
 		for(int i=0;i<id.size();i++)
 		{
