@@ -1,16 +1,16 @@
 package utils;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+import org.assertj.core.api.SoftAssertions;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
-import net.thucydides.core.annotations.Step;
 
-public class CommonRestMethods {
+public class CommonRestMethods  {
 	
 	 Response response;
-	
-	@Step("Getting API response")
+	 SoftAssertions softAssertions;
+
 	public Response getResponse(String endpoint)
 	{
 		try
@@ -41,7 +41,7 @@ public class CommonRestMethods {
 	}
 	
 	
-	@Step("Getting API status code")
+
 	public int validateStatusCode()
 	{
 		try
@@ -66,12 +66,22 @@ public class CommonRestMethods {
 	
 	public void assertionCheck(String e_id,String a_id,String e_email,String a_email,String e_firstname,String a_firstname,String e_lastname,String a_lastname )
 	{
-	
-		assertEquals(e_id,a_id,"Id do not match");
-		assertEquals(e_email,a_email,"Email id do not match");
-		assertEquals(e_firstname,a_firstname,"first name does not match");
-		assertEquals(e_lastname,a_lastname,"first name does not match");
 		
+	    softAssertions = new SoftAssertions();
+		
+		softAssertions.assertThat(e_id.equals(a_id));
+		softAssertions.assertThat(e_email.equals(a_email));
+		softAssertions.assertThat(e_firstname.equals(a_firstname));
+		softAssertions.assertThat(e_lastname.equals(a_lastname));
+		
+		softAssertions.assertAll();
+		
+		
+		
+//		assertEquals(e_email,a_email,"Email id do not match");
+//		assertEquals(e_firstname,a_firstname,"first name does not match");
+//		assertEquals(e_lastname,a_lastname,"first name does not match");
+//		
 	}
 
 }
