@@ -21,7 +21,7 @@ public class Steps {
 	
 	@Given("^I have a API endpoint to fetch all customer details and get the response$")
     public void i_have_a_api_endpoint_to_fetch_all_customer_details_and_get_the_response() throws Throwable {
-        
+        testbase.init();
     }
 
     @When("^I fetch the customer ID received and append it to the endpoint$")
