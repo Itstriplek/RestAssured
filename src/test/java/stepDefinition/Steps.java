@@ -1,6 +1,8 @@
 package stepDefinition;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import baseTest.APITest;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -13,30 +15,73 @@ public class Steps {
 	
 	
 	APITest apitest = new APITest();
-	TestBase testbase = new TestBase();
 	
-	@Given("^I have a API endpoint to fetch all customer details and get the response$")
-    public void i_have_a_api_endpoint_to_fetch_all_customer_details_and_get_the_response() {
+	@Given("^I have a GET API URI to fetch customer details$")
+    public void I_have_a_GET_API_URI_to_fetch_customer_details() {
 		apitest.setup();
     }
+	
+	@And("^I have fetched the list of valid customer IDs$")
+    public void I_have_fetched_the_list_of_valid_customer_IDs() {
+		apitest.idCapture();
+    }
 
-    @When("^I fetch the customer ID received and append it to the endpoint$")
-    public void i_fetch_the_customer_id_received_and_append_it_to_the_endpoint() {
+    @When("^I append the end point specific to fetching all the customer details$")
+    public void I_append_the_end_point_specific_to_fetching_all_the_customer_details() {
     	apitest.getAllCutomers();
     	
     }
-    @Then("^I get the valid customer response$")
-   public void i_get_the_valid_customer_response()  {
-
+    
+    @When("^I have collected both the complete and individual customer details$")
+    public void I_have_collected_both_the_complete_and_individual_customer_details()  {
     	
-    	apitest.specificCustomerDetails(apitest.ids,apitest.email,apitest.firstName,apitest.lastName);
+    	apitest.getAllCutomers();
+    	apitest.specificCustomerDetails(apitest.ids);
+    	
+    	
+    }
+   
+    @Then("^I append the specific customer ID as the end point$")
+   public void I_append_the_specific_customer_ID_as_the_end_point()  {
 
+    	apitest.specificCustomerDetails(apitest.ids);
 
     }
-   @And("^I send incorrect customer ID I get error response$")
-   public void i_send_incorrect_customer_id_i_get_error_response() {
+    
+    
+    
+    @Then("^I assert the values to check if the match or not$")
+   public void I_assert_the_values_to_check_if_the_match_or_not()  {
+
+    	
+    	apitest.checkResponseMatch(apitest.ids,apitest.email,apitest.firstName,apitest.lastName);
+
+    }
+    
+   @And("^I append the specific customer ID which is not valid as the end point")
+   public void I_append_the_specific_customer_ID_which_is_not_valid_as_the_end_point() {
 	   apitest.incorrectCustomerDetails(apitest.ids);
 	   
    }
+   
+   @And("^I check the response time$")
+   public void I_check_the_response_time() {
+	   apitest.checkResponseTime();
+	   
+   }
+   
+   @And("^I check for the response status code$")
+   public void I_check_for_the_response_status_code() {
+	   apitest.checkStatusCode();
+	   
+   }
+   
+//   @Then("^I check whether I get the valid customer response$")
+//   public void I_check_whether_I_get_the_valid_customer_response()  {
+//
+//    	
+//    	apitest.responseOutput(apitest.response);
+//
+//    }
 
 }
