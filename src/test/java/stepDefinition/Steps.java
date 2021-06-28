@@ -76,12 +76,5 @@ public class Steps {
 	   
    }
    
-//   @Then("^I check whether I get the valid customer response$")
-//   public void I_check_whether_I_get_the_valid_customer_response()  {
-//
-//    	
-//    	apitest.responseOutput(apitest.response);
-//
-//    }
 
 }

@@ -123,10 +123,4 @@ public class APITest extends TestBase {
 		}
 	}
 	
-//	public void responseOutput(Response response)
-//	{
-//		System.out.println("API response is as follows : ");
-//		System.out.println(response.asString());
-//		
-//	}
 }
