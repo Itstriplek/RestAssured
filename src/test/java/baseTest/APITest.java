@@ -3,19 +3,14 @@ package baseTest;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import junit.TestBase;
 import utils.CommonRestMethods;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 //@RunWith(SerenityRunner.class)
 public class APITest extends TestBase {
@@ -27,7 +22,7 @@ public class APITest extends TestBase {
 	public  List<String> email = new ArrayList<String>();
 	public  List<String> firstName = new ArrayList<String>();
 	public  List<String> lastName = new ArrayList<String>();
-
+	public String status;
 
 	public void setup()
 	{
@@ -50,9 +45,9 @@ public class APITest extends TestBase {
 	}
 	
 	
-	public void checkStatusCode()
+	public void checkStatusCode(String statusResult)
 	{
-		restCommonMethods.validateStatusCode();
+		restCommonMethods.validateStatusCode(statusResult);
 	}
 	
 	
@@ -72,6 +67,8 @@ public class APITest extends TestBase {
 			{
 	
 				Response response = restCommonMethods.getResponse(id.get(i)+"/CustomerView");
+				status = response.jsonPath().getString("status");
+				
 				
 				System.out.println("API response is as follows : ");
 				System.out.println(response.asString());

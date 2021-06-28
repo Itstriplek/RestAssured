@@ -1,14 +1,12 @@
 package stepDefinition;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import baseTest.APITest;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import junit.TestBase;
+
 
 public class Steps {
 	
@@ -72,7 +70,7 @@ public class Steps {
    
    @And("^I check for the response status code$")
    public void I_check_for_the_response_status_code() {
-	   apitest.checkStatusCode();
+	   apitest.checkStatusCode(apitest.status);
 	   
    }
    

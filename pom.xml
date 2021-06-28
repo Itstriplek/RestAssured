@@ -13,6 +13,9 @@
 		<serenity.cucumber.version>1.9.50</serenity.cucumber.version>
 		<cucumber.version>4.8.0</cucumber.version>
 		<encoding>UTF-8</encoding>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tags></tags>
 	</properties>
 
@@ -58,17 +61,13 @@
 			<version>${serenity.cucumber.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/net.serenity-bdd/serenity-rest-assured -->
+
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
 			<artifactId>serenity-rest-assured</artifactId>
 			<version>${serenity.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-junit</artifactId>
-			<version>2.0.0.0</version>
-			<scope>test</scope>
-		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
 		<dependency>
@@ -104,35 +103,13 @@
 			<version>5.7.2</version>
 			<scope>test</scope>
 		</dependency>
+		
 
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
 
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-
-
-
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<version>1.7.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.12.0</version>
-		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.12.0</version>
-		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>

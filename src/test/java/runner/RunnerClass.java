@@ -8,7 +8,6 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
        features= {"src/test/resources/features/customer.feature"}, 
-       tags= {"@tag"},
        glue = {"stepDefinition"},
        plugin = {"pretty", "html:target/Destination"} ) 
 		

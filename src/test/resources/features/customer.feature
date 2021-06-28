@@ -1,6 +1,4 @@
 #Author: profile.kumarkrish@gmail.com
-
-@tag
 Feature: Get customer details
 
   

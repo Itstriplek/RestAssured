@@ -2,12 +2,12 @@ package utils;
 
 
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.assertj.core.api.SoftAssertions;
+import org.hamcrest.Matchers;
 import org.testng.asserts.SoftAssert;
 
 import io.restassured.response.Response;
+import io.restassured.response.ValidatableResponse;
 import net.serenitybdd.rest.SerenityRest;
 
 public class CommonRestMethods  {
@@ -46,27 +46,39 @@ public class CommonRestMethods  {
 	
 	
 
-	public int validateStatusCode()
+	public void validateStatusCode(String statusResult)
 	{
+		softAssert = new SoftAssert();
 		try
 		{
 			int status = response.getStatusCode();
-	
-			if(response.getStatusCode()==200 || response.getStatusCode() ==201 || response.getStatusCode() == 202)
+			
+			if(statusResult.equalsIgnoreCase("success")  )
 			{
-				System.out.println("The received status code is  "+ status);
+			     softAssert.assertEquals(status, 200, "Correct status code returned");
 			}
 			else
 			{
-				System.out.println("Failed, the status code received is "+ status);
+				softAssert.assertEquals(status, 404, "Correct status code returned");
 			}
+			
+						
+			softAssert.assertAll();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return 0;
+
 		
 	}
+	
+//	public void responseTime()
+//	{
+//		ValidatableResponse responseTime = response.then();
+//	
+//		responseTime.time(Matchers.lessThan(2000L));
+//		
+//	}
 	
 	public void responseTime()
 	{
@@ -97,5 +109,6 @@ public class CommonRestMethods  {
 		softAssert.assertAll();
 		
 	}
+
 
 }

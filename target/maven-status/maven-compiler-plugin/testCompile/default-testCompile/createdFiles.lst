@@ -1,5 +1,5 @@
-junit\APITest.class
-baseTest\TestBase.class
 runner\RunnerClass.class
-utils\CommonRestMethods.class
 stepDefinition\Steps.class
+junit\TestBase.class
+utils\CommonRestMethods.class
+baseTest\APITest.class
