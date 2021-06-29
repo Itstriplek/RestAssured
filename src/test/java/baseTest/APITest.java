@@ -12,7 +12,6 @@ import junit.TestBase;
 import utils.CommonRestMethods;
 
 
-//@RunWith(SerenityRunner.class)
 public class APITest extends TestBase {
 	
 	
@@ -22,7 +21,8 @@ public class APITest extends TestBase {
 	public  List<String> email = new ArrayList<String>();
 	public  List<String> firstName = new ArrayList<String>();
 	public  List<String> lastName = new ArrayList<String>();
-	public String status;
+	
+	public int expStatus;
 
 	public void setup()
 	{
@@ -33,8 +33,9 @@ public class APITest extends TestBase {
 	public void getAllCutomers()
 	{
 		Response response = restCommonMethods.getResponse("/Customers");
+		expStatus = 404; 	
 		
-		 		
+		
 		ids = response.jsonPath().getList("data.id");
 		email = response.jsonPath().getList("data.email");
 		firstName = response.jsonPath().getList("data.first_name");
@@ -45,7 +46,7 @@ public class APITest extends TestBase {
 	}
 	
 	
-	public void checkStatusCode(String statusResult)
+	public void checkStatusCode(int statusResult)
 	{
 		restCommonMethods.validateStatusCode(statusResult);
 	}
@@ -67,7 +68,7 @@ public class APITest extends TestBase {
 			{
 	
 				Response response = restCommonMethods.getResponse(id.get(i)+"/CustomerView");
-				status = response.jsonPath().getString("status");
+				expStatus = 200; 
 				
 				
 				System.out.println("API response is as follows : ");
@@ -79,9 +80,7 @@ public class APITest extends TestBase {
 	}
 	
 	public void checkResponseMatch(List<Integer> id,List<String> email,List<String> firstname,List<String> lastname)
-	{
-		
-		
+	{		
 		
 		for(int i=0;i<id.size();i++)
 		{
@@ -113,7 +112,7 @@ public class APITest extends TestBase {
 		for(int i=0;i<id.size();i++)
 		{
 			Response response = restCommonMethods.getResponse((id.get(i)+1)+"/CustomerView");
-			
+			expStatus = 404; 
 			System.out.println("API response is as follows : ");
 			System.out.println(response.asString());
 

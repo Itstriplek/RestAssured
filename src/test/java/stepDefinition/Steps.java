@@ -70,7 +70,7 @@ public class Steps {
    
    @And("^I check for the response status code$")
    public void I_check_for_the_response_status_code() {
-	   apitest.checkStatusCode(apitest.status);
+	   apitest.checkStatusCode(apitest.expStatus);
 	   
    }
    
